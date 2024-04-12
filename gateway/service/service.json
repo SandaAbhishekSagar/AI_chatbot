@@ -1,0 +1,32 @@
+{
+    "identity": "eyJjaGVja3N1bSI6MTU3Mjk0OTg1MSwic2VydmljZUlkIjoiNTAyMTUiLCJzZXJ2aWNlVmVyc2lvbiI6IjEiLCJpZGVudGl0eUNsYXNzTWFwcGluZ3MiOlt7ImNsYXNzTmFtZSI6IkNoYXRTZXJ2ZXIiLCJjbGFzc0lkIjoxMDAwLCJ0YWciOiJkMDY5ZGY4ODU5YTk0ZDFlOGEwYmE1YTdlYjc2NGU0YyJ9LHsiY2xhc3NOYW1lIjoiQ2hhdEVudHJ5IiwiY2xhc3NJZCI6MTAwMSwidGFnIjoiMmUxMmNkZTE0NGUzNDIwZmJiZWFmNDQ2NzNkYTk1YTIifSx7ImNsYXNzTmFtZSI6IkNoYXRFdmVudCIsImNsYXNzSWQiOjEwMDIsInRhZyI6IjlhNzk1ZGFkOGYzMDQyNDlhYWQ2YzBiMGRhZTBjNjdiIn0seyJjbGFzc05hbWUiOiJHYXRld2F5QXBpIiwiY2xhc3NJZCI6MTAwMywidGFnIjoiMGNkZmJhOGMxMzg4NDU3MmEzZTg4YzY5NDRkMDlkNjcifSx7ImNsYXNzTmFtZSI6IkdhdGV3YXlTZXNzaW9uIiwiY2xhc3NJZCI6MTAwNCwidGFnIjoiODc2ZmUyNGQ2ODhiNDQxMjllNDAxN2RlY2Q2Y2MzMDQifV0sImxhc3RDbGFzc0lkIjoxMDA0fQ==",
+    "name": "gateway",
+    "configVersion": 1,
+    "classes": [
+        {
+            "name": "ChatServer",
+            "tag": "d069df8859a94d1e8a0ba5a7eb764e4c"
+        },
+        {
+            "name": "ChatEntry",
+            "tag": "2e12cde144e3420fbbeaf44673da95a2"
+        },
+        {
+            "name": "ChatEvent",
+            "tag": "9a795dad8f304249aad6c0b0dae0c67b"
+        },
+        {
+            "name": "GatewayApi",
+            "tag": "0cdfba8c13884572a3e88c6944d09d67"
+        },
+        {
+            "name": "GatewaySession",
+            "tag": "876fe24d688b44129e4017decd6cc304"
+        }
+    ],
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "allowJs": true,
+        "strict": true
+    }
+}
