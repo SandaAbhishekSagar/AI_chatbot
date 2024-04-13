@@ -1,4 +1,4 @@
 # Service source config, must be stored in source control.
-!service.json
+service.json
 # Service backend stubs, also must be stored in source control.
-!**/roli-runtime/
+roli-runtime/
