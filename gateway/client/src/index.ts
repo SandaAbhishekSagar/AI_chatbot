@@ -39,7 +39,63 @@ if (args[0] === '--console') {
   await roli.subscribeEvent(chatServer, ChatEvent, (chatEvent: ChatEvent) => {
     outputChatEntry(chatEvent.entry);
   });
-} else {
+} 
+// else if(args[0] === '--contactus'){
+// //neeed.  tooooo writeeeeee
+// } 
+else {
+  const{channel}=await inquirer.prompt([
+    {
+      type:'input',
+      name:'channel',
+      message:'Choose between Customer Care and Dynamic Chatbot: type "customer care" for Customer Care or "dynamic chatbot" for Dynamic Chatbot'
+    }
+  ]);
+  if(channel=='customer care'){
+    const { userName } = await inquirer.prompt([
+      {
+        type: 'input',
+        name: 'userName',
+        message: 'Login: ',
+      }
+    ]);
+    const promptMessage='Act as a customer care executive with years of experience, answering '+userName+' questions on Abhishek’s Dynamic Chatbot in a formal and professional manner. Only answer questions related to Abhishek’s Dynamic Chatbot. Any other inquiries, ask to contact the owner at "sanda.a@northeastern.edu". Utilize previous responses as needed. Abhishek’s Dynamic Chatbot was a versatile tool that could be tailored to any field by answering three simple questions: how you wanted it to behave, what topic it specialized in, and what tone it should use. Users could access their chat history by running the command `npm run console` and logging in with their username. To exit the chatbot window, users could type `/quit`, and to exit the chat history, they could use Ctrl+C. The chatbot would only respond to questions within the specified field and ignore those outside its expertise.'    
+    console.log('Username: ' + userName);
+  const session = await gatewayApi.getSession(userName);
+  session.setPromptMessage(promptMessage);
+  
+  console.log(
+    `You are speaking with a chatbot. Your session ID is ${session.sessionId}. Use /quit to exit chat.`
+  );
+  
+
+  while (true) {
+    await inquirer
+      .prompt([
+        {
+          type: 'input',
+          name: 'text',
+          message: `${userName}: `,
+        },
+      ])
+      .then(async ({ text }) => {
+        if (text === '/quit') {
+          process.exit(0);
+          return;
+        } else {
+          await chatServer.say(userName, text);
+          const response = await session.tell(text);
+          const timestamp = chalk.grey(`[${new Date().toLocaleTimeString()}]`);
+          const userName_1 = chalk.whiteBright(`[chatbot]:`);
+
+          const t = chalk.greenBright(response);
+          await chatServer.say(userName_1, t);
+          console.log(`${timestamp} ${userName_1} ${t}`);
+        }
+      });
+    }
+  }
+  else if(channel=='dynamic chatbot'){
   const { userName, context, topic, quality } = await inquirer.prompt([
     {
       type: 'input',
@@ -77,13 +133,15 @@ if (args[0] === '--console') {
     ' manner. Only respond to inquiries related to ' +
     topic +
     ' and refrain from addressing unrelated topics. Utilize previous responses when necessary.';
+
   console.log('Username: ' + userName);
   const session = await gatewayApi.getSession(userName);
   session.setPromptMessage(promptMessage);
-
+  
   console.log(
     `You are speaking with a chatbot. Your session ID is ${session.sessionId}. Use /quit to exit chat.`
   );
+  
 
   while (true) {
     await inquirer
@@ -109,6 +167,10 @@ if (args[0] === '--console') {
           console.log(`${timestamp} ${userName_1} ${t}`);
         }
       });
+    }
+  }
+  else{
+    process.exit(0);
   }
 }
 
